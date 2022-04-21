@@ -15,8 +15,9 @@
 #include <unistd.h>
 #include <stdio.h>
 
+void ft_reverse_rotate(t_list **begin);
 
-void	ft_display(t_list *begin)
+void ft_display(t_list *begin)
 {
 	while (begin)
 	{
@@ -25,33 +26,13 @@ void	ft_display(t_list *begin)
 	}
 }
 
-void	ft_reverse_rotate(t_list	**begin)
-{
-	t_list	*tmp_first;
-	t_list	*tmp_last;
-
-	tmp_first = (*begin);
-	tmp_last = (*begin);
-
-	while (tmp_last->next)
-		tmp_last = tmp_last->next;
-	(*begin) = tmp_last;
-	tmp_last = tmp_last->prev;
-	(*begin)->prev = NULL;
-	(*begin)->next = tmp_first;
-	tmp_last->next = NULL;
-	tmp_first->prev = (*begin);
-
-}
-
-void	ft_rrr(t_list	**begin_a, t_list	**begin_b)
+void ft_rrr(t_list **begin_a, t_list **begin_b)
 {
 	ft_reverse_rotate(begin_a);
 	ft_reverse_rotate(begin_b);
 }
 
-
-t_list	*ft_swap(t_list *begin)
+t_list *ft_swap(t_list *begin)
 {
 	t_list *tmp;
 
@@ -69,7 +50,6 @@ t_list	*ft_swap(t_list *begin)
 	return (begin);
 }
 
-
 t_list *add_link(t_list *begin, char *c)
 {
 	t_list *elem;
@@ -83,11 +63,10 @@ t_list *add_link(t_list *begin, char *c)
 		elem->next = NULL;
 		elem->prev = NULL;
 
-
 		if (!begin)
 			return (elem);
-		
-		while(tmp && tmp->next)
+
+		while (tmp && tmp->next)
 		{
 			tmp = tmp->next;
 		}
@@ -97,31 +76,54 @@ t_list *add_link(t_list *begin, char *c)
 	return (begin);
 }
 
-void	ft_push(t_list	**begin_a, t_list	**begin_b)
- {
+void ft_push(t_list **begin_a, t_list **begin_b)
+{
 
-	 t_list	*tmp_A;
+	t_list *tmp_A;
 
-	 tmp_A = (*begin_a);
-	 if ((*begin_a) && (*begin_a)->next)
-	 {
-	 	(*begin_a) = (*begin_a)->next;
-	 	(*begin_a)->prev = NULL;
-		 tmp_A->prev = NULL;
-	 }
-	 else
-	 {
-		 (*begin_a) = NULL;
-	 }
-	 tmp_A->next = (*begin_b);
+	tmp_A = (*begin_a);
+	if ((*begin_a) && (*begin_a)->next)
+	{
+		(*begin_a) = (*begin_a)->next;
+		(*begin_a)->prev = NULL;
+		// tmp_A->prev = NULL;
+	}
+	else
+	{
+		(*begin_a) = NULL;
+	}
+	tmp_A->next = (*begin_b);
 	//  tmp_A->prev = NULL;
-	 (*begin_b) = tmp_A;
-	 if (!(*begin_b)->next)
-		 (*begin_b)->next = NULL;
+	if (*begin_b)
+		(*begin_b)->prev = tmp_A;
+	*begin_b = tmp_A;
+	// if (!(*begin_b)->next)
+	// (*begin_b)->next = NULL;
+}
 
- }
+void ft_reverse_rotate(t_list **begin)
+{
+	t_list *tmp_first;
+	t_list *tmp_last;
 
+	// ft_display(*begin);
+	tmp_first = *begin;
+	tmp_last = *begin;
 
+	while (tmp_last && tmp_last->next)
+	{
+		tmp_last = tmp_last->next;
+	}
+	*begin = tmp_last;
+	tmp_last = tmp_last->prev;
+	// write(1, tmp_last->character, 1);
+	(*begin)->prev = NULL;
+	(*begin)->next = tmp_first;
+	// printf("CBDHBCGDB\n");
+	// write(1, &tmp_last->character, 1);
+	tmp_last->next = NULL;
+	tmp_first->prev = *begin;
+}
 
 int main(int ac, char **av)
 {
@@ -142,24 +144,28 @@ int main(int ac, char **av)
 	// ft_push(&begin_a, &begin_b);
 	// ft_push(&begin_a, &begin_b);
 	// ft_push(&begin_a, &begin_b);
-	// ft_rrr(&begin_a, &begin_b);
-	// ft_display(begin_a);
-	// ft_display(begin_b);
 
 	ft_push(&begin_a, &begin_b);
 	ft_push(&begin_a, &begin_b);
 	ft_push(&begin_a, &begin_b);
-	ft_display(begin_b);
-	ft_reverse_rotate(&begin_a);
-	ft_reverse_rotate(&begin_b);
-	printf("AAAAAAAA\n");
 	ft_display(begin_a);
-	printf("BBBBBB\n");
+	printf("AAAAAAAA\n");
 	ft_display(begin_b);
+	ft_rrr(&begin_a, &begin_b);
+	printf("BBBBBB\n");
+	ft_display(begin_a);
+	printf("CCCCCC\n");
+	ft_display(begin_b);
+
+	// ft_display(begin_b);
+	// ft_reverse_rotate(&begin_b);
+	// ft_reverse_rotate(&begin_a);
+
+	// ft_display(begin_a);
 
 	// ft_rrr(&begin_a, &begin_b);
 	// ft_push(&begin_a, &begin_b);
 	// ft_push(&begin_a, &begin_b);
-	
+
 	return (0);
 }
