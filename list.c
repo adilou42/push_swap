@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:45:23 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/04/21 18:35:58 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/04/26 18:42:28 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void ft_display(t_list *begin)
 	}
 }
 
-t_list *add_link(t_list *begin, char *c)
+t_list *add_link(t_list *begin, char *c, int value)
 {
 	t_list *elem;
 	t_list *tmp;
@@ -33,6 +33,7 @@ t_list *add_link(t_list *begin, char *c)
 	tmp = begin;
 	if (elem)
 	{
+		elem->value = value;
 		elem->character = c;
 		elem->next = NULL;
 		elem->prev = NULL;
@@ -47,6 +48,8 @@ t_list *add_link(t_list *begin, char *c)
 		tmp->next = elem;
 		elem->prev = tmp;
 	}
+	// printf("%s\n", tmp->character);
+	// printf("%d\n", tmp->value);	
 	return (begin);
 }
 
@@ -61,7 +64,7 @@ int check_doublons(t_list **begin)
 		save2 = save1->next;
 		while (save2)
 		{
-			if (save1->x == save2->x)
+			if (save1->value == save2->value)
 				return (0);
 			save2 = save2->next;
 		}
@@ -84,7 +87,8 @@ t_list *ft_av_to_a_list(t_list **begin, int ac, char **av)
 		args = ft_split(av[1], ' ');
 		while (args[i])
 		{
-			tmp = add_link(tmp, args[i]);
+			tmp = add_link(tmp, args[i], ft_atoi(args[i]));
+			
 			i++;
 		}
 	}
@@ -92,7 +96,10 @@ t_list *ft_av_to_a_list(t_list **begin, int ac, char **av)
 	{
 		while (++i < ac)
 		{
-			tmp = add_link(tmp, av[i]);
+			tmp = add_link(tmp, av[i], ft_atoi(av[i]));
+			
+			// write(1, "tmp->character\n", 2);
+			// write(1, "tmp->value\n", 2);
 		}
 	}
 	return (tmp);
@@ -108,6 +115,8 @@ int main(int ac, char **av)
 	begin_a = NULL;
 	begin_b = NULL;
 
+	arg_error(ac, av);
+
 	begin_a = ft_av_to_a_list(&begin_a, ac, av);
 
 	if (check_doublons(&begin_a) == 0)
@@ -115,11 +124,17 @@ int main(int ac, char **av)
 		write(2, "Error\n", 6);
 		return (ft_lstclear(&begin_a), 0);
 	}
-	size = ft_lstsize(&begin_a);
+	// size = ft_lstsize(&begin_a);
 	if (ft_is_sorted(&begin_a))
+	{
+		// ft_display(begin_a);
 		return (ft_lstclear(&begin_a), 0);
+	}
 	else if (size <= 5)
-		;
+	{
+		write(1, "A\n", 2);
+		ft_small_sort(&begin_a, &begin_b);
+	}
 
 	ft_display(begin_a);
 

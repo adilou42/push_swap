@@ -1,26 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstclear.c                                         :+:      :+:    :+:   */
+/*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/26 14:08:09 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/04/26 14:12:49 by ayakdi           ###   ########.fr       */
+/*   Created: 2022/04/26 16:12:10 by ayakdi            #+#    #+#             */
+/*   Updated: 2022/04/26 16:13:22 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-void ft_lstclear(t_list **begin)
+int	ft_isnum(char *num)
 {
-	t_list *tmp;
+	int	i;
 
-	tmp = *begin;
-	while (*begin)
+	i = 0;
+	if (num[0] == '-')
+		i++;
+	while (num[i])
 	{
-		tmp = (*begin)->next;
-		free(*begin);
-		*begin = tmp;
+		if (!ft_isdigit(num[i]))
+			return (0);
+		i++;
 	}
+	return (1);
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int	ft_isdigit(int c)
+{
+	while (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }
