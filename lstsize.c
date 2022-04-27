@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:08:12 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/04/26 18:42:38 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/04/27 17:35:08 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int ft_lstsize(t_list **begin)
 	while (tmp)
 	{
 		tmp = tmp->next;
-		// printf("count=%d\n", count);
 		count++;
 	}
 	return (count);

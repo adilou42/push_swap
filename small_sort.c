@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:07:45 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/04/26 18:51:02 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/04/27 18:14:52 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void ft_sort_3(t_list **begin)
 {
+	write(1, "C\n", 2);
+
 	t_list *first;
 	t_list *second;
 	t_list *third;
@@ -39,16 +41,6 @@ void ft_sort_3(t_list **begin)
 	}
 }
 
-void ft_sort_2(t_list **begin)
-{
-	t_list *tmp_first;
-	t_list *tmp_second;
-
-	tmp_first = *begin;
-	tmp_second = (*begin)->next;
-	// if (tmp_first->value > tmp_second->value)
-	ft_swap(begin);
-}
 
 void ft_small_sort(t_list **begin_a, t_list **begin_b)
 {
@@ -56,15 +48,21 @@ void ft_small_sort(t_list **begin_a, t_list **begin_b)
 
 	size = ft_lstsize(begin_a);
 	printf("size = %d\n", size);
+	int sort = ft_is_sorted(begin_a);
+	printf("sort = %d\n", sort);
 
-	if (!(ft_is_sorted(begin_a) && size == 2))
+
+	if ((ft_is_sorted(begin_a) == 0) && size == 2)
 	{
-		ft_display(*begin_a);
-		write(1, "AA\n", 3);
 		ft_swap(begin_a);
-		ft_display(*begin_a);
 	}
-	else
+	else if ((ft_is_sorted(begin_a) == 0) && size == 3)
 	{
+		ft_sort_3(begin_a);
 	}
+	else if ((ft_is_sorted(begin_a) == 0) && size == 4)
+	{
+		ft_sort_4(begin_a, begin_b);
+	}
+	
 }

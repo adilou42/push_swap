@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:45:23 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/04/26 18:42:28 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/04/27 18:02:34 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,6 @@ t_list *ft_av_to_a_list(t_list **begin, int ac, char **av)
 		while (++i < ac)
 		{
 			tmp = add_link(tmp, av[i], ft_atoi(av[i]));
-
-			// write(1, "tmp->character\n", 2);
-			// write(1, "tmp->value\n", 2);
 		}
 	}
 	return (tmp);
@@ -134,7 +131,7 @@ int main(int ac, char **av)
 		ft_small_sort(&begin_a, &begin_b);
 	}
 
-	// ft_display(begin_a);
+	ft_display(begin_a);
 
 	return (0);
 }
