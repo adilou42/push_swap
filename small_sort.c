@@ -12,11 +12,11 @@
 
 #include "list.h"
 
-void	ft_sort_3(t_list **begin)
+void ft_sort_3(t_list **begin)
 {
-	t_list	*first;
-	t_list	*second;
-	t_list	*third;
+	t_list *first;
+	t_list *second;
+	t_list *third;
 
 	first = *begin;
 	second = (*begin)->next;
@@ -39,7 +39,7 @@ void	ft_sort_3(t_list **begin)
 	}
 }
 
-void	ft_sort_2(t_list **begin)
+void ft_sort_2(t_list **begin)
 {
 	t_list *tmp_first;
 	t_list *tmp_second;
@@ -47,28 +47,24 @@ void	ft_sort_2(t_list **begin)
 	tmp_first = *begin;
 	tmp_second = (*begin)->next;
 	// if (tmp_first->value > tmp_second->value)
-		ft_swap(begin);
+	ft_swap(begin);
 }
 
-void    ft_small_sort(t_list **begin_a, t_list **begin_b)
+void ft_small_sort(t_list **begin_a, t_list **begin_b)
 {
-    int	size;
+	int size;
 
-	write(1, "B\n", 2);
 	size = ft_lstsize(begin_a);
 	printf("size = %d\n", size);
-	// if (!(ft_is_sorted(begin_a) && size == 5))
-	// 	ft_sort_5(begin_a, begin_b);
-	if (!(ft_is_sorted(begin_a) && size == 4))
-		ft_sort_4(begin_a, begin_b);
-	else if (!(ft_is_sorted(begin_a) && size == 3))
-	{
-		ft_sort_3(begin_a);
-		write(1, "C\n", 2);
 
-	}
-	else if (!(ft_is_sorted(begin_a) && size == 2))
+	if (!(ft_is_sorted(begin_a) && size == 2))
 	{
-		ft_sort_2(begin_a);
+		ft_display(*begin_a);
+		write(1, "AA\n", 3);
+		ft_swap(begin_a);
+		ft_display(*begin_a);
+	}
+	else
+	{
 	}
 }

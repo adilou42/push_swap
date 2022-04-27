@@ -49,7 +49,7 @@ t_list *add_link(t_list *begin, char *c, int value)
 		elem->prev = tmp;
 	}
 	// printf("%s\n", tmp->character);
-	// printf("%d\n", tmp->value);	
+	// printf("%d\n", tmp->value);
 	return (begin);
 }
 
@@ -88,7 +88,7 @@ t_list *ft_av_to_a_list(t_list **begin, int ac, char **av)
 		while (args[i])
 		{
 			tmp = add_link(tmp, args[i], ft_atoi(args[i]));
-			
+
 			i++;
 		}
 	}
@@ -97,7 +97,7 @@ t_list *ft_av_to_a_list(t_list **begin, int ac, char **av)
 		while (++i < ac)
 		{
 			tmp = add_link(tmp, av[i], ft_atoi(av[i]));
-			
+
 			// write(1, "tmp->character\n", 2);
 			// write(1, "tmp->value\n", 2);
 		}
@@ -124,10 +124,8 @@ int main(int ac, char **av)
 		write(2, "Error\n", 6);
 		return (ft_lstclear(&begin_a), 0);
 	}
-	// size = ft_lstsize(&begin_a);
 	if (ft_is_sorted(&begin_a))
 	{
-		// ft_display(begin_a);
 		return (ft_lstclear(&begin_a), 0);
 	}
 	else if (size <= 5)
@@ -136,7 +134,7 @@ int main(int ac, char **av)
 		ft_small_sort(&begin_a, &begin_b);
 	}
 
-	ft_display(begin_a);
+	// ft_display(begin_a);
 
 	return (0);
 }

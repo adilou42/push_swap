@@ -23,7 +23,7 @@ int ft_lstsize(t_list **begin)
 	while (tmp)
 	{
 		tmp = tmp->next;
-	printf("count=%d\n", count);
+		// printf("count=%d\n", count);
 		count++;
 	}
 	return (count);

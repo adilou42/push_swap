@@ -12,17 +12,17 @@
 
 #include "list.h"
 
-void	free_args(char **args)
+void free_args(char **args)
 {
-	char	**tmp;
+    char **tmp;
 
-	tmp = args;
-	while (*tmp)
-	{
-		free(*tmp);
-		tmp++;
-	}
-	free(args);
+    tmp = args;
+    while (*tmp)
+    {
+        free(*tmp);
+        tmp++;
+    }
+    free(args);
 }
 
 int ft_parsing_split(int ac, char **av)
@@ -75,7 +75,7 @@ int ft_parsing(int ac, char **av)
     return (1);
 }
 
-int    arg_error(int ac, char **av)
+int arg_error(int ac, char **av)
 {
     if (ac > 2)
     {
@@ -83,7 +83,9 @@ int    arg_error(int ac, char **av)
             return (0);
     }
     else if (ac < 2)
-        return (0);
+    {
+        exit(0);
+    }
     else if (ac == 2)
     {
         if (!ft_parsing_split(ac, av))
