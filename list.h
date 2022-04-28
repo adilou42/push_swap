@@ -41,10 +41,26 @@ int ft_parsing(int ac, char **av);
 int ft_parsing_split(int ac, char **av);
 void free_args(char **args);
 void ft_sort_4(t_list **begin_a, t_list **begin_b);
-void ft_action_for_fb_is_2(t_list **begin_a, t_list **begin_b);
-void ft_action_for_fb_is_3(t_list **begin_a, t_list **begin_b);
-void ft_action_for_fb_is_4(t_list **begin_a, t_list **begin_b);
+void fb_is_second(t_list **begin_a, t_list **begin_b);
+void fb_is_third(t_list **begin_a, t_list **begin_b);
+void fb_is_fourth(t_list **begin_a, t_list **begin_b);
 void ft_sort_3(t_list **begin);
 void ft_display(t_list *begin);
+int	ft_get_min(t_list **begin);
+int	ft_get_max(t_list **begin);
+void	ft_sort_5(t_list **begin_a, t_list **begin_b);
+void	ft_min_is_second(t_list **begin_a, t_list **begin_b);
+void	ft_min_is_third(t_list **begin_a, t_list **begin_b);
+void	ft_min_is_fourth(t_list **begin_a, t_list **begin_b);
+void	ft_min_is_fifth(t_list **begin_a, t_list **begin_b);
+void	ft_sort_5_nd(t_list **begin_a, t_list **begin_b);
+void	ft_min_is_second_2(t_list **begin_a, t_list **begin_b);
+void	ft_min_is_third_2(t_list **begin_a, t_list **begin_b);
+void	ft_min_is_fourth_2(t_list **begin_a, t_list **begin_b);
+void	ft_big_sort(t_list **begin_a, t_list **begin_b);
+int	ft_recup_mediane(t_list **begin_a);
+void	ft_index(t_list **begin);
+void	ft_push_sup_med(t_list **begin_a, t_list **begin_b, int med);
+
 
 #endif

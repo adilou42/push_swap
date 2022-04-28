@@ -1,0 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_big_sort.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/28 18:43:32 by ayakdi            #+#    #+#             */
+/*   Updated: 2022/04/28 18:54:33 by ayakdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "list.h"
+
+void	ft_index(t_list **begin)
+{
+	t_list		*tmp1;
+	t_list		*tmp2;
+
+	tmp1 = *begin;
+	while (tmp1)
+	{
+		tmp2 = *begin;
+		while (tmp2)
+		{
+			if (tmp2->value < tmp1->value)
+				tmp1->count++;
+			tmp2 = tmp2->next;
+		}
+		tmp1 = tmp1->next;
+	}
+}
+
+int	ft_recup_mediane(t_list **begin_a)
+{
+	t_list	*tmp;
+	int			med_index;
+	int			med_value;
+
+	tmp = *begin_a;
+	med_value = 0;
+	ft_index(begin_a);
+	if (ft_lstsize(begin_a) % 2 == 0)
+		med_index = ft_lstsize(begin_a) / 2;
+	else
+		med_index = ft_lstsize(begin_a) / 2 + 1;
+	while (tmp)
+	{
+		if (tmp->count == med_index)
+			med_value = tmp->value;
+		tmp = tmp->next;
+	}
+	return (med_value);
+}
+
+void	ft_big_sort(t_list **begin_a, t_list **begin_b)
+{
+	int	med;
+	int	size;
+	int	tmp1;
+
+	tmp1 = 0;
+	size = ft_lstsize(begin_a);
+	med = ft_recup_mediane(begin_a);
+	while (tmp1 < size)
+	{
+		ft_push_sup_med(begin_a, begin_b, med);
+		tmp1++;
+	}
+	ft_sort_3(begin_a);
+	ft_btoa(begin_a, begin_b);
+}

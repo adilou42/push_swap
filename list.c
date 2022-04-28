@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:45:23 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/04/27 18:02:34 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/04/28 18:54:33 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ t_list *add_link(t_list *begin, char *c, int value)
 		tmp->next = elem;
 		elem->prev = tmp;
 	}
-	// printf("%s\n", tmp->character);
-	// printf("%d\n", tmp->value);
 	return (begin);
 }
 
@@ -129,6 +127,10 @@ int main(int ac, char **av)
 	{
 		write(1, "A\n", 2);
 		ft_small_sort(&begin_a, &begin_b);
+	}
+	else
+	{
+		ft_big_sort
 	}
 
 	ft_display(begin_a);

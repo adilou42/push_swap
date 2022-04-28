@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:07:45 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/04/27 18:14:52 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/04/28 18:24:09 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,8 @@ void ft_small_sort(t_list **begin_a, t_list **begin_b)
 	{
 		ft_sort_4(begin_a, begin_b);
 	}
-	
+	else if ((ft_is_sorted(begin_a) == 0) && size == 5)
+	{
+		ft_sort_5(begin_a, begin_b);
+	}
 }

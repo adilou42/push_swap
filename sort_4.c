@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 17:16:52 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/04/26 17:44:40 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/04/28 18:39:41 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@ void	ft_sort_4(t_list **begin_a, t_list **begin_b)
 	if ((first_b->value < first->value) && (first_b->value < second->value) && (first_b->value < third->value))
 		ft_push(begin_b, begin_a);
 	else if ((first_b->value > first->value) && (first_b->value < second->value) && (first_b->value < third->value))
-		ft_action_for_fb_is_2(begin_a, begin_b);
+		fb_is_second(begin_a, begin_b);
 	else if ((first_b->value > first->value) && (first_b->value > second->value) && first_b->value < third->value)
-		ft_action_for_fb_is_3(begin_a, begin_b);
+		fb_is_third(begin_a, begin_b);
 	else if ((first_b->value > first->value) && (first_b->value > second->value) && (first_b->value > third->value))
-		ft_action_for_fb_is_4(begin_a, begin_b);
+		fb_is_fourth(begin_a, begin_b);
 }
 
-void	ft_action_for_fb_is_2(t_list **begin_a, t_list **begin_b)
+void	fb_is_second(t_list **begin_a, t_list **begin_b)
 {
 	ft_push(begin_b, begin_a);
 	ft_swap(begin_a);
 }
 
-void	ft_action_for_fb_is_3(t_list **begin_a, t_list **begin_b)
+void	fb_is_third(t_list **begin_a, t_list **begin_b)
 {
 	ft_reverse_rotate(begin_a);
 	ft_push(begin_b, begin_a);
@@ -49,7 +49,7 @@ void	ft_action_for_fb_is_3(t_list **begin_a, t_list **begin_b)
 	ft_reverse_rotate(begin_a);
 }
 
-void	ft_action_for_fb_is_4(t_list **begin_a, t_list **begin_b)
+void	fb_is_fourth(t_list **begin_a, t_list **begin_b)
 {
 	ft_push(begin_b, begin_a);
 	ft_rotate(begin_a);
