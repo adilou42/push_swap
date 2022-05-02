@@ -6,52 +6,49 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:07:45 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/04/28 18:24:09 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/02 19:42:25 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-void ft_sort_3(t_list **begin)
+void	ft_sort_3(t_list **begin)
 {
-	write(1, "C\n", 2);
-
-	t_list *first;
-	t_list *second;
-	t_list *third;
+	t_list	*first;
+	t_list	*second;
+	t_list	*third;
 
 	first = *begin;
 	second = (*begin)->next;
 	third = (*begin)->next->next;
-	if ((first->value > second->value) && (second->value > third->value) && (third->value < first->value))
+	if ((first->value > second->value) && (second->value > third->value)
+		&& (third->value < first->value))
 	{
 		ft_rotate(begin);
 		ft_swap(begin);
 	}
-	else if ((first->value > second->value) && (second->value < third->value) && (third->value < first->value))
+	else if ((first->value > second->value) && (second->value < third->value)
+		&& (third->value < first->value))
 		ft_rotate(begin);
-	else if ((first->value > second->value) && (second->value < third->value) && (third->value > first->value))
+	else if ((first->value > second->value) && (second->value < third->value)
+		&& (third->value > first->value))
 		ft_swap(begin);
-	else if ((first->value < second->value) && (second->value > third->value) && (third->value < first->value))
+	else if ((first->value < second->value) && (second->value > third->value)
+		&& (third->value < first->value))
 		ft_reverse_rotate(begin);
-	else if ((first->value < second->value) && (second->value > third->value) && (third->value > first->value))
+	else if ((first->value < second->value) && (second->value > third->value)
+		&& (third->value > first->value))
 	{
 		ft_reverse_rotate(begin);
 		ft_swap(begin);
 	}
 }
 
-
-void ft_small_sort(t_list **begin_a, t_list **begin_b)
+void	ft_small_sort(t_list **begin_a, t_list **begin_b)
 {
-	int size;
+	int	size;
 
 	size = ft_lstsize(begin_a);
-	printf("size = %d\n", size);
-	int sort = ft_is_sorted(begin_a);
-	printf("sort = %d\n", sort);
-
-
 	if ((ft_is_sorted(begin_a) == 0) && size == 2)
 	{
 		ft_swap(begin_a);

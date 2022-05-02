@@ -6,23 +6,23 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:08:01 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/04/26 14:12:49 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/02 19:35:39 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-static int ft_ischarset(char c, char sep)
+static int	ft_ischarset(char c, char sep)
 {
 	if (c == sep)
 		return (1);
 	return (0);
 }
 
-static int ft_countwords(char const *str, char sep)
+static int	ft_countwords(char const *str, char sep)
 {
-	int wc;
-	int i;
+	int	wc;
+	int	i;
 
 	i = 0;
 	wc = 0;
@@ -39,11 +39,11 @@ static int ft_countwords(char const *str, char sep)
 	return (wc);
 }
 
-static char *ft_dup(char const *str, char sep)
+static char	*ft_dup(char const *str, char sep)
 {
-	int len;
-	int i;
-	char *cpy;
+	int		len;
+	int		i;
+	char	*cpy;
 
 	len = 0;
 	i = 0;
@@ -61,11 +61,11 @@ static char *ft_dup(char const *str, char sep)
 	return (cpy);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char **split;
-	int i;
-	int j;
+	char	**split;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;

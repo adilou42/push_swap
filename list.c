@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:45:23 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/04/28 18:54:33 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/02 19:09:00 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void ft_display(t_list *begin)
+void	ft_display(t_list *begin)
 {
 	while (begin)
 	{
@@ -24,10 +24,10 @@ void ft_display(t_list *begin)
 	}
 }
 
-t_list *add_link(t_list *begin, char *c, int value)
+t_list	*add_link(t_list *begin, char *c, int value)
 {
-	t_list *elem;
-	t_list *tmp;
+	t_list	*elem;
+	t_list	*tmp;
 
 	elem = malloc(sizeof(t_list));
 	tmp = begin;
@@ -37,10 +37,8 @@ t_list *add_link(t_list *begin, char *c, int value)
 		elem->character = c;
 		elem->next = NULL;
 		elem->prev = NULL;
-
 		if (!begin)
 			return (elem);
-
 		while (tmp && tmp->next)
 		{
 			tmp = tmp->next;
@@ -51,10 +49,10 @@ t_list *add_link(t_list *begin, char *c, int value)
 	return (begin);
 }
 
-int check_doublons(t_list **begin)
+int	check_doublons(t_list **begin)
 {
-	t_list *save1;
-	t_list *save2;
+	t_list	*save1;
+	t_list	*save2;
 
 	save1 = *begin;
 	while (save1)
@@ -71,14 +69,13 @@ int check_doublons(t_list **begin)
 	return (1);
 }
 
-t_list *ft_av_to_a_list(t_list **begin, int ac, char **av)
+t_list	*ft_av_to_a_list(t_list **begin, int ac, char **av)
 {
-	int i;
-	char **args;
-	t_list *tmp;
+	int		i;
+	char	**args;
+	t_list	*tmp;
 
 	tmp = *begin;
-
 	i = 0;
 	if (ac == 2)
 	{
@@ -86,7 +83,6 @@ t_list *ft_av_to_a_list(t_list **begin, int ac, char **av)
 		while (args[i])
 		{
 			tmp = add_link(tmp, args[i], ft_atoi(args[i]));
-
 			i++;
 		}
 	}
@@ -100,40 +96,28 @@ t_list *ft_av_to_a_list(t_list **begin, int ac, char **av)
 	return (tmp);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_list *begin_a;
-	t_list *begin_b;
-	int size;
+	t_list	*begin_a;
+	t_list	*begin_b;
+	int		size;
 
 	size = 0;
 	begin_a = NULL;
 	begin_b = NULL;
-
 	arg_error(ac, av);
-
 	begin_a = ft_av_to_a_list(&begin_a, ac, av);
-
 	if (check_doublons(&begin_a) == 0)
 	{
 		write(2, "Error\n", 6);
 		return (ft_lstclear(&begin_a), 0);
 	}
 	if (ft_is_sorted(&begin_a))
-	{
 		return (ft_lstclear(&begin_a), 0);
-	}
 	else if (size <= 5)
-	{
-		write(1, "A\n", 2);
 		ft_small_sort(&begin_a, &begin_b);
-	}
 	else
-	{
-		ft_big_sort
-	}
-
+		ft_big_sort(&begin_a, &begin_b);
 	ft_display(begin_a);
-
 	return (0);
 }

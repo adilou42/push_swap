@@ -6,11 +6,30 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 18:43:32 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/04/28 18:54:33 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/02 19:37:42 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
+
+void	ft_push_sup_med(t_list **begin_a, t_list **begin_b, int med)
+{
+	t_list		*tmp_a;
+	t_list		*tmp_b;
+	int			min;
+	int			max;
+
+	tmp_a = *begin_a;
+	tmp_b = *begin_b;
+	min = ft_get_min(&tmp_a);
+	max = ft_get_max(&tmp_a);
+	if ((tmp_a->value != med) && (tmp_a->value != min) && (tmp_a->value != max))
+		ft_push(&tmp_a, &tmp_b);
+	else
+		ft_rotate(&tmp_a);
+	*begin_a = tmp_a;
+	*begin_b = tmp_b;
+}
 
 void	ft_index(t_list **begin)
 {
@@ -33,7 +52,7 @@ void	ft_index(t_list **begin)
 
 int	ft_recup_mediane(t_list **begin_a)
 {
-	t_list	*tmp;
+	t_list		*tmp;
 	int			med_index;
 	int			med_value;
 

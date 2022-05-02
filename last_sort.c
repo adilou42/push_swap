@@ -1,45 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_min_max.c                                      :+:      :+:    :+:   */
+/*   last_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 15:59:44 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/02 19:45:39 by ayakdi           ###   ########.fr       */
+/*   Created: 2022/05/02 16:42:49 by ayakdi            #+#    #+#             */
+/*   Updated: 2022/05/02 19:43:15 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-int	ft_get_min(t_list **begin)
+int	ft_loop_ls(t_list **begin_a, int min, int i)
 {
-	t_list		*tmp;
-	int			x;
+	t_list	*a;
 
-	tmp = *begin;
-	x = INT_MAX;
-	while (tmp)
+	a = *begin_a;
+	i = 0;
+	while (a && a->value != min)
 	{
-		if (x > tmp->value)
-			x = tmp->value;
-		tmp = tmp->next;
+		i++;
+		a = a->next;
 	}
-	return (x);
+	return (i);
 }
 
-int	ft_get_max(t_list **begin)
+void	ft_last_sort(t_list **begin_a, int min)
 {
-	t_list		*tmp;
-	int			x;
+	t_list		*a;
+	int			i;
+	int			j;
 
-	tmp = *begin;
-	x = INT_MIN;
-	while (tmp)
+	a = *begin_a;
+	i = 0;
+	i = ft_loop_ls(&a, min, i);
+	j = ft_lstsize(begin_a) - i;
+	if (i < j)
 	{
-		if (x < tmp->value)
-			x = tmp->value;
-		tmp = tmp->next;
+		while (i)
+		{
+			ft_rotate(begin_a);
+			i--;
+		}
 	}
-	return (x);
+	else
+	{
+		while (j)
+		{
+			ft_reverse_rotate(begin_a);
+			j--;
+		}
+	}
 }
