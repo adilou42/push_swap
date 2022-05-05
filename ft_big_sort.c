@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 18:43:32 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/02 19:37:42 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/05 19:49:46 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	ft_push_sup_med(t_list **begin_a, t_list **begin_b, int med)
 	min = ft_get_min(&tmp_a);
 	max = ft_get_max(&tmp_a);
 	if ((tmp_a->value != med) && (tmp_a->value != min) && (tmp_a->value != max))
-		ft_push(&tmp_a, &tmp_b);
+		ft_push(&tmp_a, &tmp_b, 2);
 	else
-		ft_rotate(&tmp_a);
+		ft_rotate(&tmp_a, 1);
 	*begin_a = tmp_a;
 	*begin_b = tmp_b;
 }

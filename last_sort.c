@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:42:49 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/02 19:43:15 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/05 19:49:46 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_last_sort(t_list **begin_a, int min)
 	{
 		while (i)
 		{
-			ft_rotate(begin_a);
+			ft_rotate(begin_a, 1);
 			i--;
 		}
 	}
@@ -48,7 +48,7 @@ void	ft_last_sort(t_list **begin_a, int min)
 	{
 		while (j)
 		{
-			ft_reverse_rotate(begin_a);
+			ft_reverse_rotate(begin_a, 1);
 			j--;
 		}
 	}

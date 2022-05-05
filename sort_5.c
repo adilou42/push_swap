@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:03:30 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/02 19:39:36 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/05 19:49:46 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_sort_5(t_list **begin_a, t_list **begin_b)
 	fifth = (*begin_a)->next->next->next->next;
 	if ((first->value < second->value) && (first->value < third->value)
 		&& (first->value < fourth->value) && (first->value < fifth->value))
-		ft_push(begin_a, begin_b);
+		ft_push(begin_a, begin_b, 2);
 	else if ((first->value > second->value) && (second->value < third->value)
 		&& (second->value < fourth->value) && (second->value < fifth->value))
 		ft_min_is_second(begin_a, begin_b);
@@ -45,26 +45,26 @@ void	ft_sort_5(t_list **begin_a, t_list **begin_b)
 
 void	ft_min_is_second(t_list **begin_a, t_list **begin_b)
 {
-	ft_swap(begin_a);
-	ft_push(begin_a, begin_b);
+	ft_swap(begin_a, 1);
+	ft_push(begin_a, begin_b, 2);
 }
 
 void	ft_min_is_third(t_list **begin_a, t_list **begin_b)
 {
-	ft_rotate(begin_a);
-	ft_rotate(begin_a);
-	ft_push(begin_a, begin_b);
+	ft_rotate(begin_a, 1);
+	ft_rotate(begin_a, 1);
+	ft_push(begin_a, begin_b, 2);
 }
 
 void	ft_min_is_fourth(t_list **begin_a, t_list **begin_b)
 {
-	ft_reverse_rotate(begin_a);
-	ft_reverse_rotate(begin_a);
-	ft_push(begin_a, begin_b);
+	ft_reverse_rotate(begin_a, 1);
+	ft_reverse_rotate(begin_a, 1);
+	ft_push(begin_a, begin_b, 2);
 }
 
 void	ft_min_is_fifth(t_list **begin_a, t_list **begin_b)
 {
-	ft_reverse_rotate(begin_a);
-	ft_push(begin_a, begin_b);
+	ft_reverse_rotate(begin_a, 1);
+	ft_push(begin_a, begin_b, 2);
 }

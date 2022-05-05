@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 17:16:52 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/02 19:46:06 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/05 19:49:46 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_sort_4(t_list **begin_a, t_list **begin_b)
 	t_list	*third;
 	t_list	*first_b;
 
-	ft_push(begin_a, begin_b);
+	ft_push(begin_a, begin_b, 2);
 	ft_sort_3(begin_a);
 	first = *begin_a;
 	second = (*begin_a)->next;
@@ -27,7 +27,7 @@ void	ft_sort_4(t_list **begin_a, t_list **begin_b)
 	first_b = (*begin_b);
 	if ((first_b->value < first->value) && (first_b->value < second->value)
 		&& (first_b->value < third->value))
-		ft_push(begin_b, begin_a);
+		ft_push(begin_b, begin_a, 1);
 	else if ((first_b->value > first->value) && (first_b->value < second->value)
 		&& (first_b->value < third->value))
 		fb_is_second(begin_a, begin_b);
@@ -41,20 +41,20 @@ void	ft_sort_4(t_list **begin_a, t_list **begin_b)
 
 void	fb_is_second(t_list **begin_a, t_list **begin_b)
 {
-	ft_push(begin_b, begin_a);
-	ft_swap(begin_a);
+	ft_push(begin_b, begin_a, 1);
+	ft_swap(begin_a, 1);
 }
 
 void	fb_is_third(t_list **begin_a, t_list **begin_b)
 {
-	ft_reverse_rotate(begin_a);
-	ft_push(begin_b, begin_a);
-	ft_reverse_rotate(begin_a);
-	ft_reverse_rotate(begin_a);
+	ft_reverse_rotate(begin_a, 1);
+	ft_push(begin_b, begin_a, 1);
+	ft_reverse_rotate(begin_a, 1);
+	ft_reverse_rotate(begin_a, 1);
 }
 
 void	fb_is_fourth(t_list **begin_a, t_list **begin_b)
 {
-	ft_push(begin_b, begin_a);
-	ft_rotate(begin_a);
+	ft_push(begin_b, begin_a, 1);
+	ft_rotate(begin_a, 1);
 }

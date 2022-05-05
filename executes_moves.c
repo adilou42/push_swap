@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:25:03 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/02 19:46:15 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/05 19:49:46 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_exec1(int *tab, t_list **begin_a, t_list **begin_b)
 	}
 	while (rr)
 	{
-		ft_rr(begin_a, begin_b);
+		ft_rr(begin_a, begin_b, 1, 2);
 		rr--;
 	}
 	ft_execution1(begin_a, begin_b, ra, rb);
@@ -95,12 +95,12 @@ void	ft_exec3(int *tab, t_list **begin_a, t_list **begin_b)
 		rindex_b = ft_lstsize(begin_b) - tab[1];
 	while (tab[0])
 	{
-		ft_rotate(begin_a);
+		ft_rotate(begin_a, 1);
 		tab[0]--;
 	}
 	while (rindex_b)
 	{
-		ft_reverse_rotate(begin_b);
+		ft_reverse_rotate(begin_b, 2);
 		rindex_b--;
 	}
 }
@@ -114,12 +114,12 @@ void	ft_exec4(int *tab, t_list **begin_a, t_list **begin_b)
 		rindex_a = ft_lstsize(begin_a) - tab[0];
 	while (tab[1])
 	{
-		ft_rotate(begin_b);
+		ft_rotate(begin_b, 2);
 		tab[1]--;
 	}
 	while (rindex_a)
 	{
-		ft_reverse_rotate(begin_a);
+		ft_reverse_rotate(begin_a, 1);
 		rindex_a--;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:45:23 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/02 19:09:00 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/05 16:03:52 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int	main(int ac, char **av)
 		write(2, "Error\n", 6);
 		return (ft_lstclear(&begin_a), 0);
 	}
+	size = ft_lstsize(&begin_a);
 	if (ft_is_sorted(&begin_a))
 		return (ft_lstclear(&begin_a), 0);
 	else if (size <= 5)

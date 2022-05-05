@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:18:26 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/02 19:18:38 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/05 19:07:42 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,5 @@ int	arg_error(int ac, char **av)
 		if (!ft_parsing_split(ac, av))
 			return (0);
 	}
+	return (0);
 }

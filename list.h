@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 19:19:27 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/02 19:31:28 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/05 19:50:54 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ struct s_list
 	t_list	*prev;
 };
 
-void		ft_rotate(t_list **begin);
-void		ft_ss(t_list **begin_a, t_list **begin_b);
-void		ft_swap(t_list **begin);
-void		ft_push(t_list **begin_a, t_list **begin_b);
-void		ft_rr(t_list **begin_a, t_list **begin_b);
-void		ft_reverse_rotate(t_list **begin);
-void		ft_rrr(t_list **begin_a, t_list **begin_b);
+void		ft_rotate(t_list **begin, int nbr);
+void		ft_ss(t_list **begin_a, t_list **begin_b, int nbr_a, int nbr_b);
+void		ft_swap(t_list **begin, int nbr);
+void		ft_push(t_list **begin_a, t_list **begin_b, int nbr);
+void		ft_rr(t_list **begin_a, t_list **begin_b, int nbr_a, int nbr_b);
+void		ft_reverse_rotate(t_list **begin, int nbr);
+void		ft_rrr(t_list **begin_a, t_list **begin_b, int nbr_a, int nbr_b);
 char		**ft_split(char const *s, char c);
 void		ft_lstclear(t_list **begin);
 int			ft_lstsize(t_list **begin);

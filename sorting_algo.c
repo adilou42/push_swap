@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:46:32 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/02 19:21:35 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/05 19:49:46 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_getnxtmov(t_list **begin_a, t_list **begin_b, int index_a,
 		tmp_b = tmp_b->next;
 	}
 	ft_execmove(final_tab, begin_a, begin_b);
-	ft_push(begin_b, begin_a);
+	ft_push(begin_b, begin_a, 1);
 	free(final_tab);
 }
 

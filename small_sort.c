@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:07:45 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/02 19:42:25 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/05 19:49:46 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,23 @@ void	ft_sort_3(t_list **begin)
 	if ((first->value > second->value) && (second->value > third->value)
 		&& (third->value < first->value))
 	{
-		ft_rotate(begin);
-		ft_swap(begin);
+		ft_rotate(begin, 1);
+		ft_swap(begin, 1);
 	}
 	else if ((first->value > second->value) && (second->value < third->value)
 		&& (third->value < first->value))
-		ft_rotate(begin);
+		ft_rotate(begin, 1);
 	else if ((first->value > second->value) && (second->value < third->value)
 		&& (third->value > first->value))
-		ft_swap(begin);
+		ft_swap(begin, 1);
 	else if ((first->value < second->value) && (second->value > third->value)
 		&& (third->value < first->value))
-		ft_reverse_rotate(begin);
+		ft_reverse_rotate(begin, 1);
 	else if ((first->value < second->value) && (second->value > third->value)
 		&& (third->value > first->value))
 	{
-		ft_reverse_rotate(begin);
-		ft_swap(begin);
+		ft_reverse_rotate(begin, 1);
+		ft_swap(begin, 1);
 	}
 }
 
@@ -51,7 +51,7 @@ void	ft_small_sort(t_list **begin_a, t_list **begin_b)
 	size = ft_lstsize(begin_a);
 	if ((ft_is_sorted(begin_a) == 0) && size == 2)
 	{
-		ft_swap(begin_a);
+		ft_swap(begin_a, 1);
 	}
 	else if ((ft_is_sorted(begin_a) == 0) && size == 3)
 	{
