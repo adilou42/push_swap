@@ -6,18 +6,18 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 19:19:27 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/05 19:50:54 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/10 18:53:27 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <limits.h>
-
 #ifndef LIST_H
 # define LIST_H
+
+# include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <limits.h>
 
 typedef struct s_list	t_list;
 
@@ -25,7 +25,7 @@ struct s_list
 {
 	char	*character;
 	int		count;
-	int		value;
+	int		v;
 	t_list	*next;
 	t_list	*prev;
 };
@@ -100,4 +100,5 @@ int			ft_methode4(int index_a, int index_b, t_list **begin_a,
 				t_list **begin_b);
 int			ft_index_to_be_in_a(t_list **begin_a, t_list **begin_b,
 				int index_a);
+
 #endif

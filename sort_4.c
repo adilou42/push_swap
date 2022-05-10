@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 17:16:52 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/05 19:49:46 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/10 17:13:24 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ void	ft_sort_4(t_list **begin_a, t_list **begin_b)
 	second = (*begin_a)->next;
 	third = (*begin_a)->next->next;
 	first_b = (*begin_b);
-	if ((first_b->value < first->value) && (first_b->value < second->value)
-		&& (first_b->value < third->value))
+	if ((first_b->v < first->v) && (first_b->v < second->v)
+		&& (first_b->v < third->v))
 		ft_push(begin_b, begin_a, 1);
-	else if ((first_b->value > first->value) && (first_b->value < second->value)
-		&& (first_b->value < third->value))
+	else if ((first_b->v > first->v) && (first_b->v < second->v)
+		&& (first_b->v < third->v))
 		fb_is_second(begin_a, begin_b);
-	else if ((first_b->value > first->value) && (first_b->value > second->value)
-		&& first_b->value < third->value)
+	else if ((first_b->v > first->v) && (first_b->v > second->v)
+		&& first_b->v < third->v)
 		fb_is_third(begin_a, begin_b);
-	else if ((first_b->value > first->value) && (first_b->value > second->value)
-		&& (first_b->value > third->value))
+	else if ((first_b->v > first->v) && (first_b->v > second->v)
+		&& (first_b->v > third->v))
 		fb_is_fourth(begin_a, begin_b);
 }
 

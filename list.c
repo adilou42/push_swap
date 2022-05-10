@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:45:23 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/05 16:03:52 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/10 18:58:26 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,22 @@ void	ft_display(t_list *begin)
 	}
 }
 
-t_list	*add_link(t_list *begin, char *c, int value)
+t_list	*add_link(t_list *begin, char *c, int v)
 {
 	t_list	*elem;
 	t_list	*tmp;
 
 	elem = malloc(sizeof(t_list));
+	tmp = NULL;
 	tmp = begin;
+	if (!begin)
+		return (elem);
 	if (elem)
 	{
-		elem->value = value;
+		elem->v = v;
 		elem->character = c;
 		elem->next = NULL;
 		elem->prev = NULL;
-		if (!begin)
-			return (elem);
 		while (tmp && tmp->next)
 		{
 			tmp = tmp->next;
@@ -60,7 +61,7 @@ int	check_doublons(t_list **begin)
 		save2 = save1->next;
 		while (save2)
 		{
-			if (save1->value == save2->value)
+			if (save1->v == save2->v)
 				return (0);
 			save2 = save2->next;
 		}
@@ -75,6 +76,7 @@ t_list	*ft_av_to_a_list(t_list **begin, int ac, char **av)
 	char	**args;
 	t_list	*tmp;
 
+	tmp = NULL;
 	tmp = *begin;
 	i = 0;
 	if (ac == 2)
@@ -85,6 +87,7 @@ t_list	*ft_av_to_a_list(t_list **begin, int ac, char **av)
 			tmp = add_link(tmp, args[i], ft_atoi(args[i]));
 			i++;
 		}
+		free_args(args);
 	}
 	else
 	{

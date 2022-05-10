@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:03:30 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/05 19:49:46 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/10 17:12:54 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,28 @@
 
 void	ft_sort_5(t_list **begin_a, t_list **begin_b)
 {
-	t_list	*first;
-	t_list	*second;
-	t_list	*third;
-	t_list	*fourth;
-	t_list	*fifth;
+	t_list	*f;
+	t_list	*s;
+	t_list	*t;
+	t_list	*fo;
+	t_list	*fi;
 
-	first = (*begin_a);
-	second = (*begin_a)->next;
-	third = (*begin_a)->next->next;
-	fourth = (*begin_a)->next->next->next;
-	fifth = (*begin_a)->next->next->next->next;
-	if ((first->value < second->value) && (first->value < third->value)
-		&& (first->value < fourth->value) && (first->value < fifth->value))
+	f = (*begin_a);
+	s = (*begin_a)->next;
+	t = (*begin_a)->next->next;
+	fo = (*begin_a)->next->next->next;
+	fi = (*begin_a)->next->next->next->next;
+	if ((f->v < s->v) && (f->v < t->v) && (f->v < fo->v) && (f->v < fi->v))
 		ft_push(begin_a, begin_b, 2);
-	else if ((first->value > second->value) && (second->value < third->value)
-		&& (second->value < fourth->value) && (second->value < fifth->value))
+	else if ((f->v > s->v) && (s->v < t->v) && (s->v < fo->v) && (s->v < fi->v))
 		ft_min_is_second(begin_a, begin_b);
-	else if ((first->value > third->value) && (second->value > third->value)
-		&& (third->value < fourth->value) && (third->value < fifth->value))
+	else if ((f->v > t->v) && (s->v > t->v) && (t->v < fo->v) && (t->v < fi->v))
 		ft_min_is_third(begin_a, begin_b);
-	else if ((first->value > fourth->value) && (second->value > fourth->value)
-		&& (third->value > fourth->value) && (fourth->value < fifth->value))
+	else if ((f->v > fo->v) && (s->v > fo->v) && (t->v > fo->v)
+		&& (fo->v < fi->v))
 		ft_min_is_fourth(begin_a, begin_b);
-	else if ((first->value > fifth->value) && (second->value > fifth->value)
-		&& (third->value > fifth->value) && (fourth->value > fifth->value))
+	else if ((f->v > fi->v) && (s->v > fi->v) && (t->v > fi->v)
+		&& (fo->v > fi->v))
 		ft_min_is_fifth(begin_a, begin_b);
 	ft_sort_5_nd(begin_a, begin_b);
 }

@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:45:14 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/05 19:49:46 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/09 19:51:42 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	ft_rotate(t_list **begin, int nbr)
 	(*begin)->prev = NULL;
 	tmp2->next = tmp;
 	tmp->prev = tmp2;
-
 	if (nbr == 1)
 		write(1, "ra\n", 3);
 	else

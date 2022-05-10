@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 18:43:32 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/05 19:49:46 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/10 17:13:24 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_push_sup_med(t_list **begin_a, t_list **begin_b, int med)
 	tmp_b = *begin_b;
 	min = ft_get_min(&tmp_a);
 	max = ft_get_max(&tmp_a);
-	if ((tmp_a->value != med) && (tmp_a->value != min) && (tmp_a->value != max))
+	if ((tmp_a->v != med) && (tmp_a->v != min) && (tmp_a->v != max))
 		ft_push(&tmp_a, &tmp_b, 2);
 	else
 		ft_rotate(&tmp_a, 1);
@@ -42,7 +42,7 @@ void	ft_index(t_list **begin)
 		tmp2 = *begin;
 		while (tmp2)
 		{
-			if (tmp2->value < tmp1->value)
+			if (tmp2->v < tmp1->v)
 				tmp1->count++;
 			tmp2 = tmp2->next;
 		}
@@ -54,10 +54,10 @@ int	ft_recup_mediane(t_list **begin_a)
 {
 	t_list		*tmp;
 	int			med_index;
-	int			med_value;
+	int			med_v;
 
 	tmp = *begin_a;
-	med_value = 0;
+	med_v = 0;
 	ft_index(begin_a);
 	if (ft_lstsize(begin_a) % 2 == 0)
 		med_index = ft_lstsize(begin_a) / 2;
@@ -66,10 +66,10 @@ int	ft_recup_mediane(t_list **begin_a)
 	while (tmp)
 	{
 		if (tmp->count == med_index)
-			med_value = tmp->value;
+			med_v = tmp->v;
 		tmp = tmp->next;
 	}
-	return (med_value);
+	return (med_v);
 }
 
 void	ft_big_sort(t_list **begin_a, t_list **begin_b)

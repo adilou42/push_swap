@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 16:42:49 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/05 19:49:46 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/10 17:13:24 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_loop_ls(t_list **begin_a, int min, int i)
 
 	a = *begin_a;
 	i = 0;
-	while (a && a->value != min)
+	while (a && a->v != min)
 	{
 		i++;
 		a = a->next;

@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   annexe.c                                           :+:      :+:    :+:   */
+/*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 16:12:10 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/02 17:02:18 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/10 18:01:57 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
+
+// void	free_args(char **args)
+// {
+// 	char	**tmp;
+
+// 	tmp = args;
+// 	while (*tmp)
+// 	{
+// 		free(*tmp);
+// 		tmp++;
+// 	}
+// 	free(args);
+// }
 
 int	ft_isnum(char *num)
 {
@@ -54,14 +67,14 @@ int	ft_index_to_be_in_a(t_list **begin_a, t_list **begin_b, int index_a)
 	b = *begin_b;
 	index_a = 0;
 	a = *begin_a;
-	while (a && a->value > b->value)
+	while (a && a->v > b->v)
 	{
 		index_a++;
 		a = a->next;
 	}
-	if (a && a->value < b->value)
+	if (a && a->v < b->v)
 	{
-		while (a && a->value < b->value)
+		while (a && a->v < b->v)
 		{
 			index_a++;
 			a = a->next;

@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:09:28 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/02 19:36:38 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/10 17:13:24 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_check_doublons(t_list **begin)
 		tmp2 = tmp1->next;
 		while (tmp2)
 		{
-			if (tmp1->value == tmp2->value)
+			if (tmp1->v == tmp2->v)
 				return (0);
 			tmp2 = tmp2->next;
 		}

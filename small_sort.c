@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:07:45 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/05 19:49:46 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/10 17:12:19 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,25 @@
 
 void	ft_sort_3(t_list **begin)
 {
-	t_list	*first;
-	t_list	*second;
-	t_list	*third;
+	t_list	*f;
+	t_list	*s;
+	t_list	*t;
 
-	first = *begin;
-	second = (*begin)->next;
-	third = (*begin)->next->next;
-	if ((first->value > second->value) && (second->value > third->value)
-		&& (third->value < first->value))
+	f = *begin;
+	s = (*begin)->next;
+	t = (*begin)->next->next;
+	if ((f->v > s->v) && (s->v > t->v) && (t->v < f->v))
 	{
 		ft_rotate(begin, 1);
 		ft_swap(begin, 1);
 	}
-	else if ((first->value > second->value) && (second->value < third->value)
-		&& (third->value < first->value))
+	else if ((f->v > s->v) && (s->v < t->v) && (t->v < f->v))
 		ft_rotate(begin, 1);
-	else if ((first->value > second->value) && (second->value < third->value)
-		&& (third->value > first->value))
+	else if ((f->v > s->v) && (s->v < t->v) && (t->v > f->v))
 		ft_swap(begin, 1);
-	else if ((first->value < second->value) && (second->value > third->value)
-		&& (third->value < first->value))
+	else if ((f->v < s->v) && (s->v > t->v) && (t->v < f->v))
 		ft_reverse_rotate(begin, 1);
-	else if ((first->value < second->value) && (second->value > third->value)
-		&& (third->value > first->value))
+	else if ((f->v < s->v) && (s->v > t->v) && (t->v > f->v))
 	{
 		ft_reverse_rotate(begin, 1);
 		ft_swap(begin, 1);
