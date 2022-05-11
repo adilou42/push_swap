@@ -1,0 +1,46 @@
+t_list	*add_link(t_list *begin, char *c, int v)
+{
+	t_list	*elem;
+	t_list	*tmp;
+
+	elem = malloc(sizeof(t_list));
+	tmp = NULL;
+	tmp = begin;
+	if (elem)
+	{
+		elem->v = v;
+		elem->character = c;
+		elem->next = NULL;
+		elem->prev = NULL;
+		if (!begin)
+			return (elem);
+		while (tmp && tmp->next)
+		{
+			tmp = tmp->next;
+		}
+		tmp->next = elem;
+		elem->prev = tmp;
+	}
+	return (begin);
+}
+
+void	ft_reverse_rotate(t_list **begin, int nbr)
+{
+	t_list	*tmp_first;
+	t_list	*tmp_last;
+
+	tmp_first = *begin;
+	tmp_last = *begin;
+	while (tmp_last && tmp_last->next)
+		tmp_last = tmp_last->next;
+	*begin = tmp_last;
+	tmp_last = tmp_last->prev;
+	(*begin)->prev = NULL;
+	(*begin)->next = tmp_first;
+	tmp_last->next = NULL;
+	tmp_first->prev = *begin;
+	if (nbr == 1)
+		write(1, "rra\n", 4);
+	else
+		write(1, "rrb\n", 4);
+}

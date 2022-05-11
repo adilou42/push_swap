@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 15:46:32 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/10 16:52:09 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/11 18:42:15 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	ft_btoa(t_list **begin_a, t_list **begin_b)
 		ft_getnxtmov(begin_a, begin_b, index_a, index_b);
 		tmp_b = *begin_b;
 	}
-	ft_display(*begin_a);
-	write(1, "CC\n", 3);
 	ft_last_sort(begin_a, min);
 }
 

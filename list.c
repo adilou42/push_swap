@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:45:23 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/10 18:58:26 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/11 18:46:14 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,37 +17,36 @@
 
 void	ft_display(t_list *begin)
 {
-	while (begin)
+	while (begin != NULL)
 	{
-		printf("%s\n", begin->character);
+		printf("%d\n", begin->v);
 		begin = begin->next;
 	}
 }
 
-t_list	*add_link(t_list *begin, char *c, int v)
+t_list	*ft_add_back(t_list *begin_a, int v)
 {
-	t_list	*elem;
+	t_list	*a;
 	t_list	*tmp;
 
-	elem = malloc(sizeof(t_list));
+	a = malloc(sizeof(t_list));
 	tmp = NULL;
-	tmp = begin;
-	if (!begin)
-		return (elem);
-	if (elem)
+	tmp = begin_a;
+	if (a != NULL)
 	{
-		elem->v = v;
-		elem->character = c;
-		elem->next = NULL;
-		elem->prev = NULL;
-		while (tmp && tmp->next)
-		{
-			tmp = tmp->next;
-		}
-		tmp->next = elem;
-		elem->prev = tmp;
+		a->v = v;
+		a->count = 0;
+		a->next = NULL;
 	}
-	return (begin);
+	if (!tmp)
+		begin_a = a;
+	else
+	{
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = a;
+	}
+	return (begin_a);
 }
 
 int	check_doublons(t_list **begin)
@@ -70,21 +69,20 @@ int	check_doublons(t_list **begin)
 	return (1);
 }
 
-t_list	*ft_av_to_a_list(t_list **begin, int ac, char **av)
+t_list	*ft_av_to_a_list(int ac, char **av)
 {
 	int		i;
 	char	**args;
 	t_list	*tmp;
 
 	tmp = NULL;
-	tmp = *begin;
 	i = 0;
 	if (ac == 2)
 	{
 		args = ft_split(av[1], ' ');
 		while (args[i])
 		{
-			tmp = add_link(tmp, args[i], ft_atoi(args[i]));
+			tmp = ft_add_back(tmp, ft_atoi(args[i]));
 			i++;
 		}
 		free_args(args);
@@ -93,7 +91,7 @@ t_list	*ft_av_to_a_list(t_list **begin, int ac, char **av)
 	{
 		while (++i < ac)
 		{
-			tmp = add_link(tmp, av[i], ft_atoi(av[i]));
+			tmp = ft_add_back(tmp, ft_atoi(av[i]));
 		}
 	}
 	return (tmp);
@@ -104,12 +102,14 @@ int	main(int ac, char **av)
 	t_list	*begin_a;
 	t_list	*begin_b;
 	int		size;
+	int		i;
 
 	size = 0;
+	i = 1;
 	begin_a = NULL;
 	begin_b = NULL;
-	arg_error(ac, av);
-	begin_a = ft_av_to_a_list(&begin_a, ac, av);
+	arg_error(ac, av, i);
+	begin_a = ft_av_to_a_list(ac, av);
 	if (check_doublons(&begin_a) == 0)
 	{
 		write(2, "Error\n", 6);
@@ -123,5 +123,6 @@ int	main(int ac, char **av)
 	else
 		ft_big_sort(&begin_a, &begin_b);
 	ft_display(begin_a);
+	ft_lstclear(&begin_a);
 	return (0);
 }

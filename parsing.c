@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:18:26 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/05 19:07:42 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/11 18:42:33 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,20 @@ void	free_args(char **args)
 	free(args);
 }
 
-int	ft_parsing_split(int ac, char **av)
+int	ft_parsing_split(int ac, char **av, int i)
 {
 	char	**args;
-	int		i;
 
+	i = 1;
+	args = ft_split(av[i], ' ');
 	i = 0;
-	args = ft_split(av[1], ' ');
-	if (!args[i])
+	if (args[i] == NULL)
 	{
 		write(2, "Error\n", 6);
 		free_args(args);
-		return (0);
+		exit(1);
 	}
-	if (!ft_parsing(ac, args))
+	if (ft_parsing(ac, args, i) == 0)
 	{
 		free_args(args);
 		return (0);
@@ -47,20 +47,17 @@ int	ft_parsing_split(int ac, char **av)
 	return (1);
 }
 
-int	ft_parsing(int ac, char **av)
+int	ft_parsing(int ac, char **av, int i)
 {
-	int	i;
-
 	(void)ac;
-	i = 1;
 	while (av[i])
 	{
-		if (!av[i])
+		if (av[i] == NULL)
 		{
 			write(2, "Error\n", 6);
 			return (0);
 		}
-		else if (ft_atoi_max(av[i]) < INT_MIN || ft_atoi_max(av[i]) > INT_MAX)
+		if (ft_atoi_max(av[i]) < INT_MIN || ft_atoi_max(av[i]) > INT_MAX)
 		{
 			write(2, "Error\n", 6);
 			return (0);
@@ -75,12 +72,12 @@ int	ft_parsing(int ac, char **av)
 	return (1);
 }
 
-int	arg_error(int ac, char **av)
+void	arg_error(int ac, char **av, int i)
 {
 	if (ac > 2)
 	{
-		if (!ft_parsing(ac, av))
-			return (0);
+		if (ft_parsing(ac, av, i) == 0)
+			exit(1);
 	}
 	else if (ac < 2)
 	{
@@ -88,8 +85,7 @@ int	arg_error(int ac, char **av)
 	}
 	else if (ac == 2)
 	{
-		if (!ft_parsing_split(ac, av))
-			return (0);
+		if (ft_parsing_split(ac, av, i) == 0)
+			exit(1);
 	}
-	return (0);
 }

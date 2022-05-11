@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 19:19:27 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/10 18:53:27 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/11 18:42:00 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ long long	ft_atoi_max(char *str);
 int			ft_isnum(char *num);
 int			ft_strlen(char *str);
 int			ft_isdigit(int c);
-int			arg_error(int ac, char **av);
-int			ft_parsing(int ac, char **av);
-int			ft_parsing_split(int ac, char **av);
+void		arg_error(int ac, char **av, int i);
+int			ft_parsing(int ac, char **av, int i);
+int			ft_parsing_split(int ac, char **av, int i);
 void		free_args(char **args);
 void		ft_sort_4(t_list **begin_a, t_list **begin_b);
 void		fb_is_second(t_list **begin_a, t_list **begin_b);

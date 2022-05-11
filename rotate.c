@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:45:14 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/09 19:51:42 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/11 18:46:17 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,20 @@ void	ft_rr(t_list **begin_a, t_list **begin_b, int nbr_a, int nbr_b)
 
 void	ft_reverse_rotate(t_list **begin, int nbr)
 {
-	t_list	*tmp_first;
-	t_list	*tmp_last;
+	t_list	*tmp;
+	t_list	*last;
+	t_list	*a;
 
-	tmp_first = *begin;
-	tmp_last = *begin;
-	while (tmp_last && tmp_last->next)
-		tmp_last = tmp_last->next;
-	*begin = tmp_last;
-	tmp_last = tmp_last->prev;
-	(*begin)->prev = NULL;
-	(*begin)->next = tmp_first;
-	tmp_last->next = NULL;
-	tmp_first->prev = *begin;
+	a = *begin;
+	while (a->next)
+	{
+		tmp = a->next;
+		last = a;
+		a = a->next;
+	}
+	last->next = NULL;
+	tmp->next = *begin;
+	*begin = tmp;
 	if (nbr == 1)
 		write(1, "rra\n", 4);
 	else
