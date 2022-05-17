@@ -6,24 +6,11 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 16:12:10 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/10 18:01:57 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/17 16:58:30 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
-
-// void	free_args(char **args)
-// {
-// 	char	**tmp;
-
-// 	tmp = args;
-// 	while (*tmp)
-// 	{
-// 		free(*tmp);
-// 		tmp++;
-// 	}
-// 	free(args);
-// }
 
 int	ft_isnum(char *num)
 {

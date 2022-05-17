@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:45:23 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/11 18:46:14 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/17 20:07:48 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ int	main(int ac, char **av)
 		ft_small_sort(&begin_a, &begin_b);
 	else
 		ft_big_sort(&begin_a, &begin_b);
-	ft_display(begin_a);
 	ft_lstclear(&begin_a);
 	return (0);
 }

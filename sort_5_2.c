@@ -6,7 +6,7 @@
 /*   By: ayakdi <ayakdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 18:19:26 by ayakdi            #+#    #+#             */
-/*   Updated: 2022/05/10 17:13:24 by ayakdi           ###   ########.fr       */
+/*   Updated: 2022/05/17 16:20:42 by ayakdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void	ft_sort_5_nd(t_list **begin_a, t_list **begin_b)
 		ft_push(begin_a, begin_b, 2);
 	else if ((first->v > second->v) && (second->v < third->v)
 		&& (second->v < fourth->v))
-		ft_min_is_second(begin_a, begin_b);
+		ft_min_is_second_2(begin_a, begin_b);
 	else if ((first->v > third->v) && (second->v > third->v)
 		&& (third->v < fourth->v))
-		ft_min_is_third(begin_a, begin_b);
+		ft_min_is_third_2(begin_a, begin_b);
 	else if ((first->v > fourth->v) && (second->v > fourth->v)
 		&& (third->v > fourth->v))
-		ft_min_is_fourth(begin_a, begin_b);
+		ft_min_is_fourth_2(begin_a, begin_b);
 	ft_sort_3(begin_a);
 	ft_push(begin_b, begin_a, 1);
 	ft_push(begin_b, begin_a, 1);
